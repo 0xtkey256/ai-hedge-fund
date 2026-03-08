@@ -1,65 +1,205 @@
-import Image from "next/image";
+import MonteCarloChart from "./components/MonteCarloChart";
+import PipelineDiagram from "./components/PipelineDiagram";
+import NewsFeed from "./components/NewsFeed";
+
+const team = [
+  { name: "Taiki Nakamura", role: "Full-Stack / FPGA / LLVM", focus: "Infrastructure & Integration" },
+  { name: "Yuki Murakami", role: "Geospatial Engineer", focus: "Data Pipeline & News Scraping" },
+  { name: "Hammon Dutra", role: "Hedge Fund Strategy", focus: "Domain Logic & Trading Rules" },
+  { name: "Rafael Mori", role: "Math Researcher", focus: "Monte Carlo Engine & Quant Models" },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen">
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-green-900/20 via-transparent to-transparent" />
+        <div className="relative max-w-6xl mx-auto px-6 pt-20 pb-16">
+          <div className="animate-fade-in">
+            <div className="inline-block mb-4 px-3 py-1 text-xs font-mono text-green-400 border border-green-500/30 rounded-full bg-green-500/10">
+              YC Hackathon 2026 &middot; AI-Native Hedge Fund
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+              <span className="text-white">Alpha</span>
+              <span className="text-green-400">Signal</span>
+              <span className="text-gray-600 text-3xl md:text-4xl ml-3">AI</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-400 max-w-2xl leading-relaxed">
+              Capturing alpha through{" "}
+              <span className="text-white font-semibold">multilingual news intelligence</span>{" "}
+              before global markets react.
+            </p>
+          </div>
+
+          {/* Key stats */}
+          <div className="grid grid-cols-3 gap-6 mt-12 max-w-lg animate-fade-in-delay-1">
+            <div>
+              <div className="text-3xl font-bold text-green-400">3-8h</div>
+              <div className="text-xs text-gray-500 font-mono mt-1">INFORMATION EDGE</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-white">10K+</div>
+              <div className="text-xs text-gray-500 font-mono mt-1">MC SIMULATIONS</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-blue-400">5+</div>
+              <div className="text-xs text-gray-500 font-mono mt-1">LANGUAGES</div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Problem / Solution */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="p-6 rounded-xl bg-red-500/5 border border-red-500/20">
+            <h2 className="text-lg font-bold text-red-400 mb-3">The Problem</h2>
+            <p className="text-gray-400 leading-relaxed">
+              Commodity-moving news breaks in local languages &mdash; Portuguese for Brazilian soybeans,
+              Japanese for semiconductor supply chains &mdash; hours or days before English-speaking
+              markets react. Traditional funds miss this window entirely.
+            </p>
+          </div>
+          <div className="p-6 rounded-xl bg-green-500/5 border border-green-500/20">
+            <h2 className="text-lg font-bold text-green-400 mb-3">Our Solution</h2>
+            <p className="text-gray-400 leading-relaxed">
+              AI agents scrape local news in native languages, extract commodity signals with
+              sentiment analysis, and feed them into a Monte Carlo simulation engine that produces
+              better price predictions than either method alone.
+            </p>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Pipeline */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-bold mb-2">Architecture</h2>
+        <p className="text-gray-500 mb-8 text-sm font-mono">
+          News &rarr; AI Analysis &rarr; Signal &rarr; Monte Carlo &rarr; Alpha
+        </p>
+        <PipelineDiagram />
+      </section>
+
+      {/* Two columns: News Feed + Monte Carlo */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid lg:grid-cols-5 gap-8">
+          {/* News Feed */}
+          <div className="lg:col-span-2">
+            <h2 className="text-2xl font-bold mb-2">Live Signal Feed</h2>
+            <p className="text-gray-500 mb-6 text-sm font-mono">
+              Real-time local news &rarr; AI sentiment extraction
+            </p>
+            <NewsFeed />
+          </div>
+
+          {/* Monte Carlo */}
+          <div className="lg:col-span-3">
+            <h2 className="text-2xl font-bold mb-2">Monte Carlo Simulation</h2>
+            <p className="text-gray-500 mb-6 text-sm font-mono">
+              Geometric Brownian Motion &middot; AI-adjusted &#963; and &#956; parameters
+            </p>
+            <MonteCarloChart />
+            <div className="mt-4 p-4 rounded-lg bg-white/[0.03] border border-white/10">
+              <p className="text-xs text-gray-500 font-mono leading-relaxed">
+                <span className="text-green-400 font-bold">How it works:</span>{" "}
+                When a local news event is detected (red zone), AI adjusts the volatility (&#963;)
+                and drift (&#956;) parameters fed into the Monte Carlo engine. The green paths
+                (AI-enhanced) track closer to actual price movement (yellow line) than vanilla
+                simulations (blue paths) that miss the signal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Formula */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="p-8 rounded-xl bg-white/[0.02] border border-white/10 text-center">
+          <h2 className="text-lg font-bold text-gray-400 mb-4 font-mono">THE MATH</h2>
+          <div className="text-2xl md:text-3xl font-mono text-white mb-4">
+            dS = <span className="text-yellow-400">&#956;(t)</span> &middot; S &middot; dt +{" "}
+            <span className="text-green-400">&#963;(t)</span> &middot; S &middot; dW
+          </div>
+          <div className="flex justify-center gap-8 text-sm font-mono">
+            <div>
+              <span className="text-yellow-400">&#956;(t)</span>{" "}
+              <span className="text-gray-500">= &#956;_base + f(</span>
+              <span className="text-blue-400">AI_signal</span>
+              <span className="text-gray-500">)</span>
+            </div>
+            <div>
+              <span className="text-green-400">&#963;(t)</span>{" "}
+              <span className="text-gray-500">= &#963;_base + g(</span>
+              <span className="text-blue-400">AI_signal</span>
+              <span className="text-gray-500">)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-bold mb-8">Tech Stack & Sponsor Tools</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {[
+            { name: "Shisa AI", desc: "Japanese news analysis", tag: "SPONSOR" },
+            { name: "CrustData", desc: "Market data APIs", tag: "SPONSOR" },
+            { name: "Blaxel", desc: "AI agent sandbox", tag: "SPONSOR" },
+            { name: "Python / FastAPI", desc: "Backend engine", tag: "CORE" },
+            { name: "Next.js", desc: "Dashboard", tag: "CORE" },
+            { name: "Claude API", desc: "Multilingual NLP", tag: "AI" },
+          ].map((tech, i) => (
+            <div
+              key={i}
+              className="p-4 rounded-lg bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors"
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <span className="font-semibold text-sm">{tech.name}</span>
+                <span
+                  className={`text-[9px] font-mono px-1.5 py-0.5 rounded-full ${
+                    tech.tag === "SPONSOR"
+                      ? "bg-green-500/20 text-green-400"
+                      : tech.tag === "AI"
+                      ? "bg-purple-500/20 text-purple-400"
+                      : "bg-white/10 text-gray-400"
+                  }`}
+                >
+                  {tech.tag}
+                </span>
+              </div>
+              <p className="text-xs text-gray-500">{tech.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-bold mb-8">Team</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {team.map((member, i) => (
+            <div
+              key={i}
+              className="p-4 rounded-xl bg-white/[0.03] border border-white/10 text-center"
+            >
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500/30 to-blue-500/30 mx-auto mb-3 flex items-center justify-center text-lg font-bold">
+                {member.name[0]}
+              </div>
+              <h3 className="font-semibold text-sm">{member.name}</h3>
+              <p className="text-[11px] text-gray-500 mt-1">{member.role}</p>
+              <p className="text-[11px] text-green-400/70 mt-1">{member.focus}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="max-w-6xl mx-auto px-6 py-12 text-center">
+        <div className="text-gray-600 text-xs font-mono">
+          Built at YC Hackathon Tokyo 2026 &middot; Compiled
+        </div>
+      </footer>
+    </main>
   );
 }
