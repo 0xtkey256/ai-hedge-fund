@@ -34,8 +34,19 @@ export default function Home() {
             </p>
           </div>
 
+          {/* CTA */}
+          <div className="mt-8 animate-fade-in-delay-1">
+            <a
+              href="/dashboard"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-mono font-bold text-black bg-green-400 hover:bg-green-300 rounded-lg transition-colors glow-green-strong"
+            >
+              Explore the Dark Forest
+              <span>&rarr;</span>
+            </a>
+          </div>
+
           {/* Key stats */}
-          <div className="grid grid-cols-3 gap-6 mt-12 max-w-lg animate-fade-in-delay-1">
+          <div className="grid grid-cols-3 gap-6 mt-12 max-w-lg animate-fade-in-delay-2">
             <div>
               <div className="text-3xl font-bold text-green-400">3-8h</div>
               <div className="text-xs text-gray-500 font-mono mt-1">INFORMATION EDGE</div>
